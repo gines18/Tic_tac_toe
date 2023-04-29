@@ -66,6 +66,14 @@ const announce = (type) => {
     }
     announcer.classList.remove('hide');
 };
+
+const isValidation = (title) => {
+    if (tile.innerText === 'X' || tile.innerText === '0'){
+        return false;
+    }
+    return true;
+}
+
 const updateBoard = (index) => {
     board[index] = currentPlayer;
 }
