@@ -1,4 +1,4 @@
-Window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
 const tiles = Array.from(document.querySelectorAll('.tile'));
 const playerDisplay = document.querySelector('.display-player');
 const resetButton = document.querySelector('#reset');
@@ -40,22 +40,24 @@ function handleResultValidation() {
         if (a === '' || b === '' || c === '') {
             continue;
         }
-        if( a === b && b === c) {
+        if ( a === b && b === c) {
             break;
         }
     }
+
     if (roundWon) {
         announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYER0_WON);
         isGameActive = false;
         return;
     }
+
     if (!board.includes(''))
     announce(TIE);
 }
 
 const announce = (type) => {
     switch(type){
-        case PLAYER0_WON:
+        case PLAYER0_WON: 
             announcer.innerHTML = 'Player <span class="player0">0</span> Won';
             break;
             case PLAYERX_WON:
@@ -67,7 +69,7 @@ const announce = (type) => {
     announcer.classList.remove('hide');
 };
 
-const isValidation = (title) => {
+const isValidation = (tile) => {
     if (tile.innerText === 'X' || tile.innerText === '0'){
         return false;
     }
@@ -93,6 +95,20 @@ const userAction = (tile, index) => {
         handleResultValidation();
         changePlayer();
     }
+}
+
+const resetBoard = () => {
+    board = ['', '', '', '', '', '', '', '', ''];
+    isGameActive = true;
+    announcer.classList.add('hide');
+    if (currentPlayer === '0') {
+        changePlayer();
+    }
+    tiles.forEach(tile => {
+        tile.innerText = '';
+        tile.classList.remove('playerX');
+        tile.classList.remove('playerO');
+    });
 }
 
 

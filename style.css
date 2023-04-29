@@ -19,7 +19,7 @@ margin-top: 10%;
 }
 
 .display{
-    color: rgb(217, 52, 52);
+    color: white;
     font-size: 25px;
     text-align: center;
     margin-top: 1em;
@@ -39,7 +39,7 @@ margin-top: 10%;
 }
 
 .tile{
-    border: 1px solid rgb(27, 98, 32);
+    border: 1px solid white;
     min-width: 100px;
     min-height: 100px;
     display: flex;
@@ -50,11 +50,11 @@ margin-top: 10%;
 }
 
 .playerX{
-    color: aquamarine;
+    color: #09C372;
 }
 
 .player0{
-    color: blueviolet;
+    color: #498AFB;
 }
 
 .controls{
@@ -63,6 +63,20 @@ margin-top: 10%;
     justify-content: center;
     align-items: center;
     margin-top: 1em;
+}
+
+.controls button {
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.restart {
+    background-color: #498AFB;
 }
 
 #reset{
