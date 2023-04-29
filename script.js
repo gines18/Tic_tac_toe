@@ -9,7 +9,7 @@ let currentPlayer = 'X';
 let isGameActive = true;
 
 const PLAYERX_WON = 'PLAYERX_WON';
-const PLAYERY_WON = 'PLAYERY_WON';
+const PLAYER0_WON = 'PLAYER0_WON';
 const TIE = 'TIE';
 
 /*
@@ -29,6 +29,20 @@ const winningConditions = [
     [0,4,8],
     [2,4,6]
 ]
+
+const announce = (type) => {
+    switch(type){
+        case PLAYER0_WON:
+            announcer.innerHTML = 'Player <span class="player0">0</span> Won';
+            break;
+            case PLAYERX_WON:
+                announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
+            break;
+            case TIE:
+            announcer.innerText = 'Tie';
+    }
+    announcer.classList.remove('hide');
+};
 
 const changePlayer = () => {
 playerDisplay.classList.remove(`player${currentPlayer}`);
