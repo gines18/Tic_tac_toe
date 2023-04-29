@@ -9,29 +9,29 @@ let currentPlayer = 'X';
 let isGameActive = true;
 
 const PLAYERX_WON = 'PLAYERX_WON';
-const PLAYER0_WON = 'PLAYER0_WON';
+const PLAYERO_WON = 'PLAYERO_WON';
 const TIE = 'TIE';
 
 /*
 Indexes within the board
-[1][2][3]
-[4][5][6]
-[7][8][9]
+[0][1][2]
+[3][4][5]
+[6][7][8]
 */
 
 const winningConditions = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
 ]
 
 function handleResultValidation() {
-    let roundDown = false;
+    let roundWon = false;
     for (let i = 0; i <= 7; i++){
         const winCondition = winningConditions[i];
         const a = board[winCondition[0]];
@@ -41,12 +41,13 @@ function handleResultValidation() {
             continue;
         }
         if ( a === b && b === c) {
+            roundWon = true;
             break;
         }
     }
 
     if (roundWon) {
-        announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYER0_WON);
+        announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
         isGameActive = false;
         return;
     }
@@ -57,8 +58,8 @@ function handleResultValidation() {
 
 const announce = (type) => {
     switch(type){
-        case PLAYER0_WON: 
-            announcer.innerHTML = 'Player <span class="player0">0</span> Won';
+        case PLAYERO_WON: 
+            announcer.innerHTML = 'Player <span class="playerO">0</span> Won';
             break;
             case PLAYERX_WON:
                 announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
@@ -69,7 +70,7 @@ const announce = (type) => {
     announcer.classList.remove('hide');
 };
 
-const isValidation = (tile) => {
+const isValidAction = (tile) => {
     if (tile.innerText === 'X' || tile.innerText === '0'){
         return false;
     }
@@ -101,7 +102,7 @@ const resetBoard = () => {
     board = ['', '', '', '', '', '', '', '', ''];
     isGameActive = true;
     announcer.classList.add('hide');
-    if (currentPlayer === '0') {
+    if (currentPlayer === 'O') {
         changePlayer();
     }
     tiles.forEach(tile => {
