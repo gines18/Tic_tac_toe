@@ -30,6 +30,29 @@ const winningConditions = [
     [2,4,6]
 ]
 
+function handleResultValidation() {
+    let roundDown = false;
+    for (let i = 0; i <= 7; i++){
+        const winCondition = winningConditions[i];
+        const a = board[winCondition[0]];
+        const b = board[winCondition[1]];
+        const c = board[winCondition[2]];
+        if (a === '' || b === '' || c === '') {
+            continue;
+        }
+        if( a === b && b === c) {
+            break;
+        }
+    }
+    if (roundWon) {
+        announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYER0_WON);
+        isGameActive = false;
+        return;
+    }
+    if (!board.includes(''))
+    announce(TIE);
+}
+
 const announce = (type) => {
     switch(type){
         case PLAYER0_WON:
@@ -43,6 +66,9 @@ const announce = (type) => {
     }
     announcer.classList.remove('hide');
 };
+const updateBoard = (index) => {
+    board[index] = currentPlayer;
+}
 
 const changePlayer = () => {
 playerDisplay.classList.remove(`player${currentPlayer}`);
