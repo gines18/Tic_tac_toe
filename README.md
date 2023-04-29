@@ -1,7 +1,12 @@
 
-# Project title
+# Project title:
 Tic Tac Toe 
+
 [![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
+
+## Deployed app: https://gines18.github.io/Tic_tac_toe/
+
+<img src="https://github.com/gines18/Tic_tac_toe/blob/master/img/Screenshot%202023-04-29%20at%2013.17.02.png?raw=true">
 
 ## Table of content:
 * [Project title](#Project-title)
